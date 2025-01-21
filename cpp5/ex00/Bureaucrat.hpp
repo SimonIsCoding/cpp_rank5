@@ -6,7 +6,7 @@
 /*   By: simon <simon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 13:42:31 by simon             #+#    #+#             */
-/*   Updated: 2025/01/21 15:00:46 by simon            ###   ########.fr       */
+/*   Updated: 2025/01/21 15:30:28 by simon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ class Bureaucrat
 		void	incrementGrade();
 		void	decrementGrade();
 
-		// void				setName(std::string name);
 		void				setGrade(int grade);
 
 		std::string const	getName();
