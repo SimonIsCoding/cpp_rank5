@@ -6,7 +6,7 @@
 /*   By: simon <simon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 13:42:31 by simon             #+#    #+#             */
-/*   Updated: 2025/01/21 14:07:34 by simon            ###   ########.fr       */
+/*   Updated: 2025/01/21 15:25:08 by simon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,36 +17,27 @@ Bureaucrat::Bureaucrat()
 	std::cout << "Bureaucrat Default constructor Called" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(std::string const name, int grade) : _name(name), _grade(grade)
+Bureaucrat::Bureaucrat(std::string const name) : _name(name)
 {
+	std::cout << "Bureaucrat constructor Called" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat const& copy)
+Bureaucrat::Bureaucrat(Bureaucrat const& copy) : _name(copy._name), _grade(copy._grade)
 {
 	std::cout << "Bureaucrat copy constructor Called" << std::endl;
-	if (this != &copy)
-		*this = copy;
 }
 
 Bureaucrat const& Bureaucrat::operator=(Bureaucrat const& copy)
 {
 	std::cout << "Bureaucrat operator= Called" << std::endl;
 	if (this != &copy)
-	{
-		_name = copy._name;
 		_grade = copy._grade;
-	}
 	return (*this);
 }
 
 Bureaucrat::~Bureaucrat()
 {
 	std::cout << "Default Bureaucrat destructor Called" << std::endl;
-}
-
-void	Bureaucrat::setName(std::string name)
-{
-	_name = name;
 }
 
 void	Bureaucrat::setGrade(int grade)
