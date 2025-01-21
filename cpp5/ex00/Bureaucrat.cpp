@@ -6,7 +6,7 @@
 /*   By: simon <simon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 13:42:31 by simon             #+#    #+#             */
-/*   Updated: 2025/01/21 13:18:19 by simon            ###   ########.fr       */
+/*   Updated: 2025/01/21 14:07:34 by simon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,9 @@ void	Bureaucrat::incrementGrade()
 	old_grade = _grade;
 	try
 	{
-		if (_grade < 1)
+		if (_grade <= 1)
 			throw (Bureaucrat::GradeTooHighException());
-		else if (_grade >= 150)
+		else if (_grade > 150)
 			throw (Bureaucrat::GradeTooLowException());
 		else
 		{
