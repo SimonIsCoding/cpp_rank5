@@ -6,7 +6,7 @@
 /*   By: simon <simon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 13:42:31 by simon             #+#    #+#             */
-/*   Updated: 2025/01/21 19:32:40 by simon            ###   ########.fr       */
+/*   Updated: 2025/01/22 15:04:35 by simon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ class Bureaucrat
 
 		void				setGrade(int grade);
 
-		std::string const	getName();
+		std::string const	getName() const;
 		int					getGrade();
 
-		void				signForm(AForm f);
+		void				signForm(AForm &f);
 		void				executeForm(AForm const & form);
 
 
