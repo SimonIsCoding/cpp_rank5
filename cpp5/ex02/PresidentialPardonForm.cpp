@@ -6,7 +6,7 @@
 /*   By: simon <simon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 19:35:32 by simon             #+#    #+#             */
-/*   Updated: 2025/01/21 20:01:17 by simon            ###   ########.fr       */
+/*   Updated: 2025/01/22 18:35:00 by simon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,9 @@ PresidentialPardonForm::PresidentialPardonForm(std::string const target) : AForm
 PresidentialPardonForm::~PresidentialPardonForm()
 {
 	std::cout << "PresidentialPardonForm Default Destructor Called" << std::endl;
+}
+
+void	PresidentialPardonForm::execute(Bureaucrat const & executor) const
+{
+	std::cout << executor.getName() << " has been pardoned by Zaphod Beeblebrox" << std::endl;
 }

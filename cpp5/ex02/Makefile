@@ -6,7 +6,7 @@
 #    By: simon <simon@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/21 18:39:13 by simon             #+#    #+#              #
-#    Updated: 2025/01/21 18:46:51 by simon            ###   ########.fr        #
+#    Updated: 2025/01/22 16:14:08 by simon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ $(NAME):	Makefile $(INCLUDES) $(OBJS)
 			$(COMP) $(FLAGS) -c $< -o $@
 
 clean:
-			$(RM) $(OBJS)
+			$(RM) $(OBJS) *_shrubbery
 
 fclean:		clean
 			$(RM) $(NAME)

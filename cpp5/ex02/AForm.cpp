@@ -6,7 +6,7 @@
 /*   By: simon <simon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:42:32 by simon             #+#    #+#             */
-/*   Updated: 2025/01/21 18:48:19 by simon            ###   ########.fr       */
+/*   Updated: 2025/01/22 17:56:44 by simon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,31 +36,31 @@ AForm const& AForm::operator=(AForm const& copy)
 	return (*this);
 }
 
-std::string const	AForm::getFormName()
+std::string const	AForm::getFormName() const
 {
 	return (_form_name);
 }
 
-bool	AForm::getSignedStatus()
+bool	AForm::getSignedStatus() const
 {
 	return _signed_status;
 }
 
-int	AForm::getRequiredGrade()
+int	AForm::getRequiredGrade() const
 {
 	return _required_grade;
 }
 
-int	AForm::getRequiredExecution()
+int	AForm::getRequiredExecution() const
 {
 	return _required_grade_to_execute;
 }
 
-void	AForm::beSigned(Bureaucrat position)
+void	AForm::beSigned(Bureaucrat bureaucrat)
 {
 	try
 	{
-		if (!(position.getGrade() <= _required_grade))
+		if (bureaucrat.getGrade() > _required_grade)
 			throw (Bureaucrat::GradeTooLowException());
 		else
 			_signed_status = true;

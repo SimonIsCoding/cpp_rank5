@@ -6,7 +6,7 @@
 /*   By: simon <simon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 13:42:31 by simon             #+#    #+#             */
-/*   Updated: 2025/01/21 18:54:29 by simon            ###   ########.fr       */
+/*   Updated: 2025/01/22 18:38:08 by simon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	Bureaucrat::incrementGrade()
 	}
 }
 
-std::string const Bureaucrat::getName()
+std::string const Bureaucrat::getName() const
 {
 	return (_name);
 }
@@ -102,7 +102,7 @@ int	Bureaucrat::getGrade()
 	return (_grade);
 }
 
-void	Bureaucrat::signForm(AForm f)
+void	Bureaucrat::signForm(AForm &f)
 {
 	try
 	{
@@ -116,6 +116,42 @@ void	Bureaucrat::signForm(AForm f)
 				std::cout << _name << " signed " << f.getFormName() << std::endl;
 			else
 				std::cout << _name << " couldn’t sign " << f.getFormName() << " because ";
+		}
+	}
+	catch (const std::exception& e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+}
+
+void	Bureaucrat::executeForm(AForm const & form)
+{
+	std::cout << "In function executeForm. " << form.getFormName() << " _sign_status is " << form.getSignedStatus() << std::endl;
+	// if (form.getSignedStatus() == 1 && _grade <= form.getRequiredGrade())
+	// {
+	// 	form.execute(*this);
+	// 	std::cout << _name << " executed " << form.getFormName() << std::endl;
+	// }
+	// else
+	// 	std::cerr << "Couldn't execute " << form.getFormName() << std::endl;
+
+	try
+	{
+		if (form.getSignedStatus() == 0)
+		{
+			std::cerr << "Couldn't execute " << form.getFormName() << " because it has not been signed yet" << std::endl;
+			return ;
+		}
+		else if (_grade > form.getRequiredExecution())
+		{
+			std::cerr << "Couldn't execute " << form.getFormName() << " because ";
+			throw (Bureaucrat::GradeTooLowException());
+			std::cerr << std::endl;
+		}
+		else
+		{
+			std::cout << _name << " executed " << form.getFormName() << std::endl;
+			form.execute(*this);
 		}
 	}
 	catch (const std::exception& e)
