@@ -6,12 +6,12 @@
 #    By: simon <simon@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/21 18:39:13 by simon             #+#    #+#              #
-#    Updated: 2025/01/23 22:29:30 by simon            ###   ########.fr        #
+#    Updated: 2025/01/24 17:38:08 by simon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Variables
-NAME		= Form_28B_ex02
+NAME		= Intern_ex03
 COMP		= c++
 FLAGS		= -Wall -Wextra -Werror -std=c++98
 INCLUDES	= AForm.hpp Bureaucrat.hpp ShrubberyCreationForm.hpp \
