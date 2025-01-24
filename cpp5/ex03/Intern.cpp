@@ -6,7 +6,7 @@
 /*   By: simon <simon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 19:11:30 by simon             #+#    #+#             */
-/*   Updated: 2025/01/23 22:56:07 by simon            ###   ########.fr       */
+/*   Updated: 2025/01/24 20:05:08 by simon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ Intern::Intern(Intern const& copy)
 	(void)copy;
 }
 
-/*const char	*Intern::IncorrectFormName::what() const throw()
+const char	*Intern::IncorrectFormName::what() const throw()
 {
 	return ("Incorrect Form Name");
-}*/
+}
 
-AForm*	form_returned(std::string const target_form)
+AForm*	form_returned(std::string const form_name, std::string const target_form)
 {
 	AForm*	form;
 	int	i;
@@ -48,7 +48,7 @@ AForm*	form_returned(std::string const target_form)
 	std::string forms[3] = {"Presidential", "Robotomy", "Shrubbery"};
 	for (i = 0; i < 3; i++)
 	{
-		if (forms[i] == target_form)
+		if (!strcmp(forms[i].c_str(), form_name.c_str()))
 			break ;
 	}
 	switch (i)
@@ -70,10 +70,16 @@ AForm*	Intern::makeForm(std::string const form_name, std::string const target_fo
 {
 	try
 	{
-		if (strcmp(form_name.c_str(), "Robotomy") || strcmp(form_name.c_str(), "Presidential") || strcmp(form_name.c_str(), "Shrubbery"))
+		if (strcmp(form_name.c_str(), "Robotomy") && strcmp(form_name.c_str(), "Presidential") && strcmp(form_name.c_str(), "Shrubbery"))
+		{
+			std::cout << "in IncorrectFormName Condition" << std::endl;
 			throw (Intern::IncorrectFormName());
+		}
 		else
-			return (form_returned(target_form));
+		{
+			std::cout << "in else form_returned statement" << std::endl;
+			return (form_returned(form_name, target_form));
+		}
 	}
 	catch (const std::exception & e)
 	{
