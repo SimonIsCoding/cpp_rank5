@@ -6,7 +6,7 @@
 /*   By: simon <simon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 18:59:37 by simon             #+#    #+#             */
-/*   Updated: 2025/01/30 21:32:02 by simon            ###   ########.fr       */
+/*   Updated: 2025/01/31 20:59:21 by simon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ ScalarConverter::~ScalarConverter()
 
 bool	is_int(std::string str)
 {
-	for (int i = 0; i < str.size(); i++)
+	int	len = str.size();
+	for (int i = 0; i < len; i++)
 	{
 		if (i != 0 && str[i] == '-')
 			return false;
@@ -75,18 +76,24 @@ int	check_special_case(std::string str)
 			return (5);
 		i++;
 	}
+	std::cerr << "argv[1] ill written\n";
 	return (-1);
 }
 
+void	type_float(std::string str)
+{
+	std::cout << "char: " << static_cast<char>(atoi(str.c_str())) << std::endl;
+	std::cout << "int: " << atoi(str.c_str()) << std::endl;
+	std::cout << "float: " << str.c_str() << std::endl;
+	std::cout << "double: " << strtod(str.c_str(), NULL) << std::endl;
+}
 
 //cette fonction sert a detecter quelle type est recu en str/parametre
 //Ensuite on l'envoit a la fonction converter pour que celle-ci puisse la convertir selon les differents outputs
 int	check_type(std::string str)
 {
 	if (str.size() == 1 && str[0] != 0)
-	{
 		return (1);//this is a char
-	}
 	else if (is_int(str) == true)
 		return (2); // this is an int
 	else if (str.find('.') && str.find('f'))
@@ -95,4 +102,13 @@ int	check_type(std::string str)
 		return (4); // this is a double
 	else
 		return (check_special_case(str)); // check for special cases +inf, ...
+}
+
+void	ScalarConverter::convert(std::string str)
+{
+	int	type = check_type(str);
+	if (type < 0)
+		return ;
+	// if (type == 1)
+		type_float(str);
 }
