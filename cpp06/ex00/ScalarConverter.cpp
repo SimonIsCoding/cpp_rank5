@@ -6,7 +6,7 @@
 /*   By: simon <simon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 18:59:37 by simon             #+#    #+#             */
-/*   Updated: 2025/02/01 15:08:02 by simon            ###   ########.fr       */
+/*   Updated: 2025/02/01 15:42:58 by simon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,24 @@ bool	is_float(std::string str)
 			f++;
 	}
 	if (point != 1 || f != 1)
+		return (false);
+	return (true);
+}
+
+bool	is_double(std::string str)
+{
+	int	point = 0;
+	int	len = str.size();
+	for (int i = 0; i < len; i++)
+	{
+		if (i != 0 && str[i] == '-')
+			return false;
+		if ((!(str[i] > 47 && str[i] < 58)) && str[i] != '.')
+			return false;
+		if (str[i] == '.')
+			point++;
+	}
+	if (point != 1)
 		return (false);
 	return (true);
 }
@@ -137,7 +155,7 @@ int	check_type(std::string str)
 		return (1);//this is a char
 	else if (is_float(str))
 		return (3); // this is a float
-	else if (is_int(str) == true && str.find('.') && str.size() > 1)
+	else if (is_double(str) == true)
 		return (4); // this is a double
 	else
 		return (check_special_case(str));
