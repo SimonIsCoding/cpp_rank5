@@ -6,7 +6,7 @@
 /*   By: simon <simon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 18:59:37 by simon             #+#    #+#             */
-/*   Updated: 2025/02/01 15:42:58 by simon            ###   ########.fr       */
+/*   Updated: 2025/02/01 16:04:02 by simon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,16 @@ ScalarConverter::ScalarConverter()
 	std::cout << "ScalarConverter Default Constructor Called" << std::endl;
 }
 
-// ScalarConverter::ScalarConverter(ScalarConverter const &copy)
-// {
-// 	if (this != &copy)
-// 	{
-		
-// 	}
-// }
+ScalarConverter::ScalarConverter(ScalarConverter const &copy)
+{
+	(void)copy;
+}
 
-// ScalarConverter const&	ScalarConverter::operator=(ScalarConverter const &copy)
-// {
-// 	if (this != &copy)
-// 	{
-		
-// 	}
-// 	return (*this);
-// }
+ScalarConverter const&	ScalarConverter::operator=(ScalarConverter const &copy)
+{
+	(void)copy;
+	return (*this);
+}
 
 ScalarConverter::~ScalarConverter()
 {
@@ -174,12 +168,12 @@ void	ScalarConverter::convert(std::string str)
 		nb_int = static_cast<int>(str[0]);
 		nb_float = static_cast<int>(str[0]);
 		nb_double = static_cast<int>(str[0]);
-		if (nb_int > 31 && nb_int != 127)
+		if (nb_int > 31 && nb_int <= 126)
 			std::cout << "char: " << static_cast<int>(str[0]) << std::endl;
 		else
 			std::cout << "char: Non displayable" << std::endl;
 	}
-	if (nb_int > 31 && nb_int != 127)
+	if (nb_int > 31 && nb_int <= 126)
 		std::cout << "char: " << static_cast<char>(atoi(str.c_str())) << std::endl;
 	else
 		std::cout << "char: Non displayable" << std::endl;
