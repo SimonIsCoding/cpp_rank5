@@ -6,7 +6,7 @@
 /*   By: simon <simon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:52:55 by simon             #+#    #+#             */
-/*   Updated: 2025/02/01 18:52:24 by simon            ###   ########.fr       */
+/*   Updated: 2025/02/01 18:54:35 by simon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	main(void)
 	test = Serialization::serialize(&simon);
 	std::cout << "simon name: " << simon.getName() << std::endl;
 	std::cout << "simon name: " << simon.getAge() << std::endl;
+	// std::cout << "test : _" << test << "_" << std::endl;
+	// std::cout << "test : _" << &test << "_" << std::endl;
 	Data*	data = Serialization::deserialize(test);
 	std::cout << "data name: " << data->getName() << std::endl;
 	std::cout << "data age: " <<data->getAge() << std::endl;
