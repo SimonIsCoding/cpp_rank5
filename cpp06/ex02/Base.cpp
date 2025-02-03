@@ -6,7 +6,7 @@
 /*   By: simon <simon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 19:11:02 by simon             #+#    #+#             */
-/*   Updated: 2025/02/02 12:24:36 by simon            ###   ########.fr       */
+/*   Updated: 2025/02/02 12:39:42 by simarcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,21 +54,24 @@ void identify(Base& p)
 {
 	try
 	{
-		dynamic_cast<A&>(p);
+		A& a = dynamic_cast<A&>(p);
+		(void)a;
 		std::cout << "Atype\n";
 		return ;
 	}
 	catch (std::bad_cast&){}
 	try
 	{
-		dynamic_cast<B&>(p);
+		B& b = dynamic_cast<B&>(p);
+		(void)b;
 		std::cout << "Btype\n";
 		return ;
 	}
 	catch (std::bad_cast&){}
 	try
 	{
-		dynamic_cast<C&>(p);
+		C& c = dynamic_cast<C&>(p);
+		(void)c;
 		std::cout << "Ctype\n";
 		return ;
 	}
