@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simon <simon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: simarcha <simarcha@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 18:59:37 by simon             #+#    #+#             */
-/*   Updated: 2025/02/01 16:04:02 by simon            ###   ########.fr       */
+/*   Updated: 2025/02/04 14:13:16 by simarcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,11 @@ bool	is_int(std::string str)
 	int	len = str.size();
 	for (int i = 0; i < len; i++)
 	{
-		if (i != 0 && str[i] == '-')
-			return false;
 		if (!(str[i] > 47 && str[i] < 58))
-			return false;
+		{
+			if (!(i == 0 && (str[i] == '+' || str[i] == '-')))
+				return (false);
+		}
 	}
 	return (true);
 }
@@ -53,14 +54,17 @@ bool	is_float(std::string str)
 	int	len = str.size();
 	for (int i = 0; i < len; i++)
 	{
-		if (i != 0 && str[i] == '-')
-			return false;
-		if ((!(str[i] > 47 && str[i] < 58)) && str[i] != '.' &&  str[i] != 'f')
-			return false;
+		if ((!(str[i] > 47 && str[i] < 58)) && str[i] != '.' && str[i] != 'f')
+		{
+			if (!(i == 0 && (str[i] == '+' || str[i] == '-')))
+				return (false);
+		}
 		if (str[i] == '.')
 			point++;
-		if (str[i] == 'f' && str[i + 1] == '\0')
+		if (i < len && str[i] == 'f' && str[i + 1] == '\0')
 			f++;
+		if ((i > 0 && str[i] == 'f' && str[i - 1] == '.') || (len == 1 && (str[i] == 'f' || str[i] == '.')))
+			return (false);
 	}
 	if (point != 1 || f != 1)
 		return (false);
@@ -73,10 +77,11 @@ bool	is_double(std::string str)
 	int	len = str.size();
 	for (int i = 0; i < len; i++)
 	{
-		if (i != 0 && str[i] == '-')
-			return false;
 		if ((!(str[i] > 47 && str[i] < 58)) && str[i] != '.')
-			return false;
+		{
+			if (!(i == 0 && (str[i] == '+' || str[i] == '-')))
+				return (false);
+		}
 		if (str[i] == '.')
 			point++;
 	}
@@ -161,6 +166,7 @@ void	ScalarConverter::convert(std::string str)
 	int		nb_int = atoi(str.c_str());
 	float	nb_float = atof(str.c_str());
 	double	nb_double = strtod(str.c_str(), NULL);
+	std::cout << "in convert function, type = " << type << std::endl;
 	if (type == -1 || type == 5)
 		return ;
 	if (type == 1)
@@ -168,15 +174,21 @@ void	ScalarConverter::convert(std::string str)
 		nb_int = static_cast<int>(str[0]);
 		nb_float = static_cast<int>(str[0]);
 		nb_double = static_cast<int>(str[0]);
-		if (nb_int > 31 && nb_int <= 126)
-			std::cout << "char: " << static_cast<int>(str[0]) << std::endl;
-		else
-			std::cout << "char: Non displayable" << std::endl;
 	}
 	if (nb_int > 31 && nb_int <= 126)
-		std::cout << "char: " << static_cast<char>(atoi(str.c_str())) << std::endl;
+	{
+		if (type == 1)
+			std::cout << "char: '" << str << "'" << std::endl;
+		else
+			std::cout << "char: '" << static_cast<char>(atoi(str.c_str())) << "'" << std::endl;
+	}
 	else
-		std::cout << "char: Non displayable" << std::endl;
+	{
+		if ( nb_int > 0)
+			std::cout << "char: Non displayable" << std::endl;
+		else
+			std::cout << "char: Impossible" << std::endl;
+	}
 	std::cout << "int: " << nb_int << std::endl;
 	if (nb_float == nb_int)
 		std::cout << "float: " << nb_float << ".0f" << std::endl;
