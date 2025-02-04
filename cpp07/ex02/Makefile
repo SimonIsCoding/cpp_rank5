@@ -6,7 +6,7 @@
 #    By: simarcha <simarcha@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/03 17:15:34 by simarcha          #+#    #+#              #
-#    Updated: 2025/02/03 17:21:20 by simarcha         ###   ########.fr        #
+#    Updated: 2025/02/04 19:12:56 by simarcha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME		= Array_cpp07_ex02
 COMP		= c++
 FLAGS		= -Wall -Wextra -Werror -std=c++98
 RM			= rm -rf
-INCLUDES	= Array.hpp Array.tpp
+INCLUDES	= Array.hpp
 SRCS		= main.cpp
 OBJS		= main.o
 
