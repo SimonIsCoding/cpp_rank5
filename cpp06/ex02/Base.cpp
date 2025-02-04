@@ -6,7 +6,7 @@
 /*   By: simon <simon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 19:11:02 by simon             #+#    #+#             */
-/*   Updated: 2025/02/02 12:39:42 by simarcha         ###   ########.fr       */
+/*   Updated: 2025/02/04 12:48:51 by simarcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #include "C.hpp"
 #include <cstdlib>
 #include <ctime>
-#include <typeinfo>
 
 Base::~Base()
 {
@@ -59,7 +58,7 @@ void identify(Base& p)
 		std::cout << "Atype\n";
 		return ;
 	}
-	catch (std::bad_cast&){}
+	catch (std::exception&){}
 	try
 	{
 		B& b = dynamic_cast<B&>(p);
@@ -67,7 +66,7 @@ void identify(Base& p)
 		std::cout << "Btype\n";
 		return ;
 	}
-	catch (std::bad_cast&){}
+	catch (std::exception&){}
 	try
 	{
 		C& c = dynamic_cast<C&>(p);
@@ -75,5 +74,5 @@ void identify(Base& p)
 		std::cout << "Ctype\n";
 		return ;
 	}
-	catch (std::bad_cast&){}
+	catch (std::exception&){}
 }
