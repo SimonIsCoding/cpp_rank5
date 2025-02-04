@@ -6,7 +6,7 @@
 /*   By: simarcha <simarcha@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 18:59:37 by simon             #+#    #+#             */
-/*   Updated: 2025/02/04 14:13:16 by simarcha         ###   ########.fr       */
+/*   Updated: 2025/02/04 14:16:11 by simarcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,7 +166,7 @@ void	ScalarConverter::convert(std::string str)
 	int		nb_int = atoi(str.c_str());
 	float	nb_float = atof(str.c_str());
 	double	nb_double = strtod(str.c_str(), NULL);
-	std::cout << "in convert function, type = " << type << std::endl;
+	// std::cout << "in convert function, type = " << type << std::endl;
 	if (type == -1 || type == 5)
 		return ;
 	if (type == 1)
