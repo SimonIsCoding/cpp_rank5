@@ -6,12 +6,11 @@
 /*   By: simarcha <simarcha@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 18:59:37 by simon             #+#    #+#             */
-/*   Updated: 2025/02/04 14:44:32 by simarcha         ###   ########.fr       */
+/*   Updated: 2025/02/04 14:45:01 by simarcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
-//I accepted to write .04 and considered as 0.04
 
 ScalarConverter::ScalarConverter()
 {
