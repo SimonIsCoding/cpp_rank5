@@ -6,7 +6,7 @@
 /*   By: simarcha <simarcha@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 18:59:37 by simon             #+#    #+#             */
-/*   Updated: 2025/02/04 14:45:01 by simarcha         ###   ########.fr       */
+/*   Updated: 2025/02/04 15:48:03 by simarcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,49 @@ ScalarConverter::~ScalarConverter()
 	std::cout << "Destructor Called" << std::endl;
 }
 
+int	ft_strncmp(std::string s1, std::string s2, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	while ((s1[i] != '\0' || s2[i] != '\0') && i < n && n > 0)
+	{
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
+		i++;
+	}
+	return (0);
+}
+
+bool	check_range(std::string str)
+{
+	int	len	= str.size();
+	std::string	int_lim = "2147483647";
+	std::string	pos_lim = "+2147483647";
+	std::string	neg_lim = "-2147483648";
+	if (len == 10 || len == 11)
+	{
+		if (str[0] == '+')
+		{
+			if (ft_strncmp(str, pos_lim, 11) > 0)
+				return (false);
+		}
+		else if (str[0] == '-')
+		{
+			if (ft_strncmp(str, neg_lim, 11) > 0)
+				return (false);
+		}
+		else
+		{
+			if (ft_strncmp(str, int_lim, 10) > 0)
+				return (false);
+		}
+	}
+	else if (len > 11)
+		return (false);
+	return (true);
+}
+
 bool	is_int(std::string str)
 {
 	int	len = str.size();
@@ -46,6 +89,8 @@ bool	is_int(std::string str)
 				return (false);
 		}
 	}
+	if (check_range(str) == false)
+		std::cout << "You write an Int but it's out of range" << std::endl;
 	return (true);
 }
 
@@ -108,20 +153,6 @@ bool	is_double(std::string str)
 	if (point != 1)
 		return (false);
 	return (true);
-}
-
-int	ft_strncmp(std::string s1, std::string s2, size_t n)
-{
-	size_t	i;
-
-	i = 0;
-	while ((s1[i] != '\0' || s2[i] != '\0') && i < n && n > 0)
-	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
-		i++;
-	}
-	return (0);
 }
 
 int	check_special_case(std::string str)
@@ -204,12 +235,15 @@ void	ScalarConverter::convert(std::string str)
 	}
 	else
 	{
-		if (nb_int >= 0)
+		if (nb_int >= 0 && check_range(str) == true)
 			std::cout << "char: Non displayable" << std::endl;
 		else
 			std::cout << "char: Impossible" << std::endl;
 	}
-	std::cout << "int: " << nb_int << std::endl;
+	if (check_range(str) == true)
+		std::cout << "int: " << nb_int << std::endl;
+	else
+		std::cout << "int: Impossible" << std::endl;
 	if (nb_float == nb_int)
 		std::cout << "float: " << nb_float << ".0f" << std::endl;
 	else
