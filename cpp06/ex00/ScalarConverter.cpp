@@ -6,11 +6,12 @@
 /*   By: simarcha <simarcha@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 18:59:37 by simon             #+#    #+#             */
-/*   Updated: 2025/02/04 14:16:11 by simarcha         ###   ########.fr       */
+/*   Updated: 2025/02/04 14:44:32 by simarcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
+//I accepted to write .04 and considered as 0.04
 
 ScalarConverter::ScalarConverter()
 {
@@ -38,6 +39,8 @@ bool	is_int(std::string str)
 	int	len = str.size();
 	for (int i = 0; i < len; i++)
 	{
+		if (len == 1 && (str[i] == '-' || str[i] == '+'))
+			return (false);
 		if (!(str[i] > 47 && str[i] < 58))
 		{
 			if (!(i == 0 && (str[i] == '+' || str[i] == '-')))
@@ -51,9 +54,16 @@ bool	is_float(std::string str)
 {
 	int	point = 0;
 	int	f = 0;
+	int	counter_check = 0;
 	int	len = str.size();
 	for (int i = 0; i < len; i++)
 	{
+		if (!(str[i] > 47 && str[i] < 58))
+			counter_check++;
+		else
+			counter_check = 0;
+		if (counter_check > 1)
+			return (false);
 		if ((!(str[i] > 47 && str[i] < 58)) && str[i] != '.' && str[i] != 'f')
 		{
 			if (!(i == 0 && (str[i] == '+' || str[i] == '-')))
@@ -63,7 +73,7 @@ bool	is_float(std::string str)
 			point++;
 		if (i < len && str[i] == 'f' && str[i + 1] == '\0')
 			f++;
-		if ((i > 0 && str[i] == 'f' && str[i - 1] == '.') || (len == 1 && (str[i] == 'f' || str[i] == '.')))
+		if (len == 1 && (str[i] == 'f' || str[i] == '.'))
 			return (false);
 	}
 	if (point != 1 || f != 1)
@@ -71,12 +81,21 @@ bool	is_float(std::string str)
 	return (true);
 }
 
+//counter_check is used to check if there is 2 following characters that are not
+//digits => for example: ./convert +. OR ./convert +.0f
 bool	is_double(std::string str)
 {
 	int	point = 0;
+	int	counter_check = 0;
 	int	len = str.size();
 	for (int i = 0; i < len; i++)
 	{
+		if (!(str[i] > 47 && str[i] < 58))
+			counter_check++;
+		else
+			counter_check = 0;
+		if (counter_check > 1)
+			return (false);
 		if ((!(str[i] > 47 && str[i] < 58)) && str[i] != '.')
 		{
 			if (!(i == 0 && (str[i] == '+' || str[i] == '-')))
@@ -84,6 +103,8 @@ bool	is_double(std::string str)
 		}
 		if (str[i] == '.')
 			point++;
+		if (i < len && str[i] == '.' && str[i + 1] == '\0')
+			return (false);
 	}
 	if (point != 1)
 		return (false);
@@ -184,7 +205,7 @@ void	ScalarConverter::convert(std::string str)
 	}
 	else
 	{
-		if ( nb_int > 0)
+		if (nb_int >= 0)
 			std::cout << "char: Non displayable" << std::endl;
 		else
 			std::cout << "char: Impossible" << std::endl;
