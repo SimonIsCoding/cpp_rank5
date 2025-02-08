@@ -6,14 +6,13 @@
 /*   By: simon <simon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 19:16:57 by simon             #+#    #+#             */
-/*   Updated: 2025/01/22 18:44:14 by simon            ###   ########.fr       */
+/*   Updated: 2025/02/05 15:25:54 by simon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 #include "Bureaucrat.hpp"
 #include <cstdlib>
-// #include <unistd.h>
 #include <ctime> 
 
 RobotomyRequestForm::RobotomyRequestForm() : AForm("default", 72, 45)
