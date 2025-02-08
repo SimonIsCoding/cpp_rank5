@@ -6,7 +6,7 @@
 /*   By: simon <simon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 17:21:47 by simarcha          #+#    #+#             */
-/*   Updated: 2025/02/04 19:24:19 by simon            ###   ########.fr       */
+/*   Updated: 2025/02/06 14:20:11 by simarcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ Array<T>::Array(const Array<T> &copy)
 	{
 		this->_size = copy._size;
 		this->_array = new T[_size];
-		for (int i; i < _size; i++)
+		for (int i = 0; i < _size; i++)
 			this->_array[i] = copy._array[i];
 	}
 }
@@ -116,7 +116,7 @@ Array<T> const& Array<T>::operator=(Array<T> const& copy)
 template <typename T>
 Array<T>::~Array()
 {
-	delete _array;
+	delete [] _array;
 }
 
 #endif
