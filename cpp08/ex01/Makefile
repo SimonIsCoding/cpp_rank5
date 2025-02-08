@@ -5,19 +5,19 @@
 #                                                     +:+ +:+         +:+      #
 #    By: simon <simon@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/02/04 19:27:34 by simon             #+#    #+#              #
-#    Updated: 2025/02/06 14:36:30 by simon            ###   ########.fr        #
+#    Created: 2025/02/05 16:07:38 by simon             #+#    #+#              #
+#    Updated: 2025/02/06 14:42:05 by simon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Variables
-NAME		= Easy_find
+NAME		= Span
 COMP		= c++
-FLAGS		= -Wall -Wextra -Werror -std=c++98
-INCLUDES	= easyfind.hpp
-SRCS		= main.c
-OBJS		= main.o
+FLAGS		= -Wall -Wextra -Werror -std=c++98 -fsanitize=address
 RM			= rm -rf
+INCLUDES	= Span.hpp
+SRCS		= main.cpp
+OBJS		= main.o
 
 #Rules
 all:		$(NAME)
