@@ -6,7 +6,7 @@
 /*   By: simarcha <simarcha@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 16:15:03 by simon             #+#    #+#             */
-/*   Updated: 2025/02/08 16:00:45 by simarcha         ###   ########.fr       */
+/*   Updated: 2025/02/08 18:48:00 by simarcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 #define	SPAN_HPP
 
 #include <iostream>
+#include <algorithm>
 #include <vector>
-#include <cstdlib>
-#include <ctime> 
 
 class Span
 {
@@ -44,9 +43,9 @@ class Span
 
 		void	displayAllNumbers() const;
 
-		void	addNumber();
-		int		shortestSpan();
-		int		longestSpan();
+		void	addNumber(int nb);
+		int		shortestSpan() const;
+		int		longestSpan() const;
 };
 
 #endif
