@@ -6,7 +6,7 @@
 /*   By: simarcha <simarcha@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:51:51 by simon             #+#    #+#             */
-/*   Updated: 2025/02/08 16:00:22 by simarcha         ###   ########.fr       */
+/*   Updated: 2025/02/08 17:25:34 by simarcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	Span::addNumber()
 
 int	Span::shortestSpan()
 {
-	
+	return (0);
 }
 
 int	Span::longestSpan()
@@ -84,27 +84,17 @@ int	Span::longestSpan()
 	int	min = 2147483647;
 	int	max = -2147483648;
 	
-	try
+	if (_vec.size() > 1)
 	{
-		if (_vec.size() > 1)
+		for (unsigned long i = 0; i < _vec.size(); i++)
 		{
-			for (int i = 0; i < _vec.size(); i++)
-			{
-				if (_vec[i] < min)
-					min = _vec[i];
-				if (_vec[i] > max)
-					max = _vec[i];
-			}
-			return (max - min);
+			if (_vec[i] < min)
+				min = _vec[i];
+			if (_vec[i] > max)
+				max = _vec[i];
 		}
-		else
-			throw (Span::NotEnoughNumbers());
+		return (max - min);
 	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-	
-
-
+	else
+		throw (Span::NotEnoughNumbers());
 }
