@@ -5,28 +5,28 @@
 #                                                     +:+ +:+         +:+      #
 #    By: simarcha <simarcha@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/02/03 17:15:34 by simarcha          #+#    #+#              #
-#    Updated: 2025/02/06 14:19:43 by simarcha         ###   ########.fr        #
+#    Created: 2025/02/08 18:53:59 by simarcha          #+#    #+#              #
+#    Updated: 2025/02/08 19:00:02 by simarcha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Variables
-NAME		= Array_cpp07_ex02
+NAME		= MutantStack
 COMP		= c++
-FLAGS		= -Wall -Wextra -Werror -std=c++98 -fsanitize=address
+CPPFLAGS	= -Wall -Wextra -Werror -std=c++98
 RM			= rm -rf
-INCLUDES	= Array.hpp
+INCLUDES	= MutantStack.hpp MutantStack.tpp
 SRCS		= main.cpp
-OBJS		= main.o
+OBJS		= $(SRCS:.cpp=.o)
 
 #Rules
 all:		$(NAME)
 
 $(NAME):	Makefile $(INCLUDES) $(OBJS)
-			$(COMP) $(FLAGS) $(OBJS) -o $(NAME)
+			$(COMP) $(CPPFLAGS) $(OBJS) -o $(NAME)
 
 %.o:		%.cpp $(INCLUDES)
-			$(COMP) $(FLAGS) -c $< -o $@
+			$(COMP) $(CPPFLAGS) -c $< -o $@
 
 clean:
 			$(RM) $(OBJS)
