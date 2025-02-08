@@ -6,7 +6,7 @@
 /*   By: simarcha <simarcha@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:51:51 by simon             #+#    #+#             */
-/*   Updated: 2025/02/08 17:48:33 by simarcha         ###   ########.fr       */
+/*   Updated: 2025/02/08 18:47:51 by simarcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,8 @@ void	Span::displayAllNumbers() const
 		std::cout << _vec[i] << std::endl;
 }
 
-void	Span::addNumber()
+void	Span::addNumber(int nb)
 {
-	int	nb;
-
-  	nb = rand() % 10;
 	try
 	{
 		if (_vec.size() < _N)
@@ -81,7 +78,7 @@ void	Span::addNumber()
 	}
 }
 
-int	Span::shortestSpan()
+int	Span::shortestSpan() const
 {
 	if (_vec.size() > 1)
 	{
@@ -104,7 +101,7 @@ int	Span::shortestSpan()
 		throw (Span::NotEnoughNumbers());
 }
 
-int	Span::longestSpan()
+int	Span::longestSpan() const
 {
 	int	min = 2147483647;
 	int	max = -2147483648;
