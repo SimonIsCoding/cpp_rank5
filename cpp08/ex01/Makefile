@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: simon <simon@student.42.fr>                +#+  +:+       +#+         #
+#    By: simarcha <simarcha@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/05 16:07:38 by simon             #+#    #+#              #
-#    Updated: 2025/02/06 14:42:05 by simon            ###   ########.fr        #
+#    Updated: 2025/02/08 15:04:04 by simarcha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,8 @@ COMP		= c++
 FLAGS		= -Wall -Wextra -Werror -std=c++98 -fsanitize=address
 RM			= rm -rf
 INCLUDES	= Span.hpp
-SRCS		= main.cpp
-OBJS		= main.o
+SRCS		= main.cpp Span.cpp
+OBJS		= $(SRCS:.cpp=.o)
 
 #Rules
 all:		$(NAME)
