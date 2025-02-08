@@ -6,7 +6,7 @@
 /*   By: simarcha <simarcha@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 16:15:03 by simon             #+#    #+#             */
-/*   Updated: 2025/02/08 15:44:24 by simarcha         ###   ########.fr       */
+/*   Updated: 2025/02/08 16:00:45 by simarcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,18 @@ class Span
 			public:
 				virtual const char *what(void) const throw();
 		};
+		
+		class NotEnoughNumbers: public std::exception
+		{
+			public:
+				virtual const char *what(void) const throw();
+		};
 
 		void	displayAllNumbers() const;
 
 		void	addNumber();
-		void	shortestSpan();
-		void	longestSpan();
+		int		shortestSpan();
+		int		longestSpan();
 };
 
 #endif
