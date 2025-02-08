@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simon <simon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: simarcha <simarcha@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 16:05:49 by simon             #+#    #+#             */
-/*   Updated: 2025/02/05 16:13:34 by simon            ###   ########.fr       */
+/*   Updated: 2025/02/08 15:47:23 by simarcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,21 @@ int	main(void)
 		std::cout << sp.longestSpan() << std::endl;
 	}*/
 	{
-
+		Span	test(5);
+		test.addNumber();
+		test.addNumber();
+		test.addNumber();
+		test.addNumber();
+		test.addNumber();
+		test.addNumber();
+		test.displayAllNumbers();
 	}
+	// {
+	// 	int		array[5] = {0};
+	// 	int		len = sizeof(array) / sizeof(array[0]);
+	// 	std::cout << "len array = " << len << std::endl;
+	// 	for (int i = 0; i < 5; i++)
+	// 		std::cout << array[i] << std::endl;
+	// }
 	return (0);
 }
