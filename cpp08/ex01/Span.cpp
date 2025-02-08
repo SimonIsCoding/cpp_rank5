@@ -6,11 +6,18 @@
 /*   By: simarcha <simarcha@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:51:51 by simon             #+#    #+#             */
-/*   Updated: 2025/02/08 17:25:34 by simarcha         ###   ########.fr       */
+/*   Updated: 2025/02/08 17:48:33 by simarcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
+
+int	ft_abs(int nb)
+{
+	if (nb < 0)
+		return (-nb);
+	return (nb);
+}
 
 Span::Span(){}
 
@@ -60,7 +67,7 @@ void	Span::addNumber()
 {
 	int	nb;
 
-  	nb = rand() % 100;
+  	nb = rand() % 10;
 	try
 	{
 		if (_vec.size() < _N)
@@ -76,14 +83,32 @@ void	Span::addNumber()
 
 int	Span::shortestSpan()
 {
-	return (0);
+	if (_vec.size() > 1)
+	{
+		int	shortest_span = 2147483647;
+		int	a;
+		for (unsigned long i = 0; i < _vec.size(); i++)
+		{
+			a = _vec[i];
+			for (unsigned long j = 0; j < _vec.size(); j++)
+			{
+				if (i == j)
+					continue ;
+				if (ft_abs(_vec[j] - a) < shortest_span)
+					shortest_span = ft_abs(_vec[j] - a);
+			}
+		}
+		return (shortest_span);
+	}
+	else
+		throw (Span::NotEnoughNumbers());
 }
 
 int	Span::longestSpan()
 {
 	int	min = 2147483647;
 	int	max = -2147483648;
-	
+
 	if (_vec.size() > 1)
 	{
 		for (unsigned long i = 0; i < _vec.size(); i++)
