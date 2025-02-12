@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simarcha <simarcha@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: simon <simon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 18:15:21 by simarcha          #+#    #+#             */
-/*   Updated: 2025/02/11 19:30:00 by simarcha         ###   ########.fr       */
+/*   Updated: 2025/02/12 16:58:44 by simon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,31 @@
 
 #include <iostream>
 #include <fstream>
+// #include <iomanip>
+#include <stdlib.h>
 #include <cctype>
+#include <string.h>
 
 class	BitcoinExchange
 {
 	private:
 		
 	public:
+		class IncorrectDate: public std::exception
+		{
+			public:
+				virtual const char *what(void) const throw() {return ("Date Format not correct");}
+		};
+
+		class IncorrectValue: public std::exception
+		{
+			public:
+				virtual const char *what(void) const throw() {return ("Value Format not correct");}
+		};
+
+		
+
+
 
 };
 
