@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simarcha <simarcha@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: simon <simon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:17:28 by simarcha          #+#    #+#             */
-/*   Updated: 2025/02/11 19:39:18 by simarcha         ###   ########.fr       */
+/*   Updated: 2025/02/12 12:08:32 by simon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	check_date(const std::string &line)
 {
 	if (line.length() < 10)
 		return (false);
-    for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 4; i++)
 	{
         if (!std::isdigit(line[i]))
             return (false);
@@ -45,9 +45,11 @@ int	check_file(const std::string &filename)
 {
 	std::ifstream file(filename.c_str());//convert the string into a file for getline
 	std::string line;
-	int line_nb = 1;
+	int line_nb = 0;
 	while (std::getline(file, line))
 	{
+		line_nb++;
+		std::cout << line_nb << ": " << line << std::endl;
 		if (line_nb == 1)
 			continue ;
 		if (check_date(line) != 1)
@@ -56,7 +58,6 @@ int	check_file(const std::string &filename)
 			std::cerr << "Date format ill written in the input file\n";
 			return (0);
 		}
-		line_nb++;
 	}
 	file.close();
 	return (1);
