@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: simarcha <simarcha@student.42barcelona.    +#+  +:+       +#+         #
+#    By: simon <simon@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/11 17:10:29 by simarcha          #+#    #+#              #
-#    Updated: 2025/02/11 17:23:44 by simarcha         ###   ########.fr        #
+#    Updated: 2025/02/12 16:03:56 by simon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Variable
 NAME		= btc
 COMP		= c++
-CPPFLAGS	= -Wall -Wextra -Werror -std=c++98 -fsanitize=address
+CPPFLAGS	= -Wall -Wextra -Werror -std=c++98# -fsanitize=address
 RM			= rm -rf
 INCLUDES	= BitcoinExchange.hpp
 SRCS		= main.cpp BitcoinExchange.cpp
