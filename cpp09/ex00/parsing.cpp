@@ -6,12 +6,11 @@
 /*   By: simon <simon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 12:38:14 by simon             #+#    #+#             */
-/*   Updated: 2025/02/13 14:32:05 by simon            ###   ########.fr       */
+/*   Updated: 2025/02/13 19:17:24 by simon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
-// int		check_in_map_csv(int day, int month, int year);
 
 //PARSING BEGINNING
 //function to check if the file exists
@@ -112,7 +111,12 @@ bool	check_value(const std::string &line)
 	return (true);
 }
 
-int	check_file(const std::string &filename)
+void	print_bitcoin_value(std::string &line, std::map<int, float> _map_csv)
+{
+	//printer la date avec la line, recevoir la value du csv et la multiplier par la quantite de l'input.txt
+}
+
+int	check_file(const std::string &filename, std::map<int, float> _map_csv)
 {
 	std::ifstream file(filename.c_str());//convert the string into a file for getline
 	std::string line;
@@ -127,9 +131,11 @@ int	check_file(const std::string &filename)
 			if (line_nb == 1)
 				continue ;
 			if (check_date(line) != 1)
-				throw (BitcoinExchange::IncorrectDate());
+				throw (IncorrectDate());
 			else if (check_value(line) != 1)
-				throw (BitcoinExchange::IncorrectValue());
+				throw (IncorrectValue());
+			//ici il faudrait appeler la fonction pour imprimer les valeurs du btc
+			print_bitcoin_value(line, _map_csv);
 		}
 		catch (const std::exception &e)
 		{
@@ -140,7 +146,7 @@ int	check_file(const std::string &filename)
 	return (1);
 }
 
-int	parsing(char *argv1)
+int	parsing(char *argv1, std::map<int, float> _map_csv)
 {
 	std::string filename = argv1;
 	if (file_exists(filename) != 1)
@@ -148,7 +154,7 @@ int	parsing(char *argv1)
 		std::cerr << "file doesn't exist\n";
 		return (0);
 	}
-	check_file(filename);
+	check_file(filename, _map_csv);
 	return (1);
 }
 

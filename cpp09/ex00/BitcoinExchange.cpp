@@ -6,7 +6,7 @@
 /*   By: simon <simon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 18:17:18 by simarcha          #+#    #+#             */
-/*   Updated: 2025/02/13 15:58:43 by simon            ###   ########.fr       */
+/*   Updated: 2025/02/13 19:15:57 by simon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,19 @@ float	recover_value(const std::string &line)
 	return (atof(nb_str.c_str()));
 }
 
-void	BitcoinExchange::print_map()
+void	print_bitcoin_value(std::map<int, float> _map_csv)
+{
+	(void)_map_csv;
+}
+
+
+void	print_map(std::map<int, float>	_map_csv)
 {
 	for (std::map<int, float>::const_iterator it = _map_csv.begin(); it != _map_csv.end(); ++it)
 		std::cout << it->first << ": " << it->second << std::endl;
 }
 
-void	BitcoinExchange::convert_date_in_csv_into_map()
+void	convert_date_in_csv_into_map(std::map<int, float> _map_csv)
 {
 	std::ifstream	file("data.csv");
 	std::string		string_day;
@@ -53,7 +59,6 @@ void	BitcoinExchange::convert_date_in_csv_into_map()
 	std::string		string_year;
 	int				year;
 	int				i = 0;
-	BitcoinExchange	bitcoin;
 
 	if (!file)
 	{
@@ -61,7 +66,6 @@ void	BitcoinExchange::convert_date_in_csv_into_map()
 		return ;
 	}
 	std::string	line;
-	// std::cout << "before getline csv\n";
 	while (std::getline(file, line))
 	{
 		i++;
@@ -75,11 +79,5 @@ void	BitcoinExchange::convert_date_in_csv_into_map()
 		day = atoi(string_day.c_str());
 		_map_csv[convert_date_in_int(day, month, year)] = recover_value(line);
 	}
-	print_map();
 	file.close();
 }
-
-// int		check_in_map_csv(int day, int month, int year)
-// {
-	
-// }
