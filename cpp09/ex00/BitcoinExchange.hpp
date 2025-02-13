@@ -6,7 +6,7 @@
 /*   By: simon <simon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 18:15:21 by simarcha          #+#    #+#             */
-/*   Updated: 2025/02/12 16:58:44 by simon            ###   ########.fr       */
+/*   Updated: 2025/02/13 15:57:25 by simon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,17 @@
 
 #include <iostream>
 #include <fstream>
-// #include <iomanip>
 #include <stdlib.h>
 #include <cctype>
+#include <map>
 #include <string.h>
+#include <algorithm>
 
 class	BitcoinExchange
 {
 	private:
-		
+		std::map<int, float>	_map_csv;
+	
 	public:
 		class IncorrectDate: public std::exception
 		{
@@ -37,9 +39,8 @@ class	BitcoinExchange
 				virtual const char *what(void) const throw() {return ("Value Format not correct");}
 		};
 
-		
-
-
+		void	convert_date_in_csv_into_map();
+		void	print_map();
 
 };
 
