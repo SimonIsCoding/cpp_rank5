@@ -6,7 +6,7 @@
 #    By: simon <simon@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/11 17:10:29 by simarcha          #+#    #+#              #
-#    Updated: 2025/02/13 12:38:51 by simon            ###   ########.fr        #
+#    Updated: 2025/02/15 19:42:36 by simon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ COMP		= c++
 CPPFLAGS	= -Wall -Wextra -Werror -std=c++98# -fsanitize=address
 RM			= rm -rf
 INCLUDES	= BitcoinExchange.hpp
-SRCS		= main.cpp BitcoinExchange.cpp parsing.cpp
+SRCS		= main.cpp BitcoinExchange.cpp
 OBJS		= $(SRCS:.cpp=.o)
 
 #Rules
