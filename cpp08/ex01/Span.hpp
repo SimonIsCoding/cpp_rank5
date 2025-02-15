@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simarcha <simarcha@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: simon <simon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 16:15:03 by simon             #+#    #+#             */
-/*   Updated: 2025/02/08 18:48:00 by simarcha         ###   ########.fr       */
+/*   Updated: 2025/02/15 20:26:31 by simon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,20 @@ class Span
 		class TooManyNumbers: public std::exception
 		{
 			public:
-				virtual const char *what(void) const throw();
+				virtual const char *what(void) const throw() {return ("We can't add any numbers. We reached the maximum possible numbers stored");};
 		};
 		
 		class NotEnoughNumbers: public std::exception
 		{
 			public:
-				virtual const char *what(void) const throw();
+				virtual const char *what(void) const throw() {return ("Not enough numbers to calculate the shortest/longest span");};
 		};
 
 		void	displayAllNumbers() const;
 
-		void	addNumber(int nb);
-		int		shortestSpan() const;
-		int		longestSpan() const;
+		void				addNumber(int nb);
+		long		shortestSpan() const;
+		long		longestSpan() const;
 };
 
 #endif

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simarcha <simarcha@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: simon <simon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:51:51 by simon             #+#    #+#             */
-/*   Updated: 2025/02/08 18:47:51 by simarcha         ###   ########.fr       */
+/*   Updated: 2025/02/15 20:42:42 by simon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 
-int	ft_abs(int nb)
+long	ft_abs(long nb)
 {
 	if (nb < 0)
 		return (-nb);
@@ -47,16 +47,6 @@ Span const& Span::operator=(Span const& copy)
 	return (*this);
 }
 
-const char *Span::TooManyNumbers::what() const throw()
-{
-	return ("We can't add any numbers. We reached the maximum possible numbers stored");
-}
-
-const char *Span::NotEnoughNumbers::what() const throw()
-{
-	return ("Not enough numbers to calculate the shortest/longest span");
-}
-
 void	Span::displayAllNumbers() const
 {
 	for (unsigned int i = 0; i < _vec.size(); i++)
@@ -78,12 +68,12 @@ void	Span::addNumber(int nb)
 	}
 }
 
-int	Span::shortestSpan() const
+long	Span::shortestSpan() const
 {
 	if (_vec.size() > 1)
 	{
-		int	shortest_span = 2147483647;
-		int	a;
+		long	shortest_span = 9223372036854775807;
+		long	a;
 		for (unsigned long i = 0; i < _vec.size(); i++)
 		{
 			a = _vec[i];
@@ -101,18 +91,18 @@ int	Span::shortestSpan() const
 		throw (Span::NotEnoughNumbers());
 }
 
-int	Span::longestSpan() const
+long	Span::longestSpan() const
 {
-	int	min = 2147483647;
-	int	max = -2147483648;
+	long	min = 2147483647;
+	long	max = -2147483648;
 
 	if (_vec.size() > 1)
 	{
 		for (unsigned long i = 0; i < _vec.size(); i++)
 		{
-			if (_vec[i] < min)
+			if (_vec[i] < static_cast<int>(min))
 				min = _vec[i];
-			if (_vec[i] > max)
+			if (_vec[i] > static_cast<int>(max))
 				max = _vec[i];
 		}
 		return (max - min);

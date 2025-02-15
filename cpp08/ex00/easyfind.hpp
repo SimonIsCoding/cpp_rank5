@@ -6,7 +6,7 @@
 /*   By: simon <simon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 19:35:00 by simon             #+#    #+#             */
-/*   Updated: 2025/02/05 15:58:25 by simon            ###   ########.fr       */
+/*   Updated: 2025/02/15 19:52:36 by simon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,6 @@
 # include <vector>
 # include <exception>
 # include <algorithm>
-
-// template <typename T, int I>
-// class	easyfind
-// {
-// 	private:
-
-// 	public:
-// 		easyfind();
-// 		easyfind(easyfind const& copy);
-// 		easyfind const& operator=(easyfind const& copy);
-// 		~easyfind();
-// };
-
-// template <typename T, int I>
-// easyfind::easyfind()
-// {
-// 	std::cout << "Default Constructor Called" << std::endl;
-// }
 
 class	NumberNotFound:	public std::exception
 {
@@ -49,14 +31,11 @@ template <typename T>
 int	find_in_containers(T container, int to_find)
 {
 	typename	T::iterator	it;
-	int			index = 0;
 	try {
 	{
-		for (it = container.begin(); it != container.end(); it++, index++)
-		{
-			if (*it == to_find)
-				return (index);
-		}
+		it = std::find(container.begin(), container.end(), to_find);
+		if (it != container.end())
+			return std::distance(container.begin(), it);
 		throw NumberNotFound();
 	}
 	}
