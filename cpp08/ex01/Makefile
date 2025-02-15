@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: simarcha <simarcha@student.42barcelona.    +#+  +:+       +#+         #
+#    By: simon <simon@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/05 16:07:38 by simon             #+#    #+#              #
-#    Updated: 2025/02/08 15:04:04 by simarcha         ###   ########.fr        #
+#    Updated: 2025/02/15 20:35:41 by simon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Variables
 NAME		= Span
 COMP		= c++
-FLAGS		= -Wall -Wextra -Werror -std=c++98 -fsanitize=address
+FLAGS		= -Wall -Wextra -Werror -std=c++98
 RM			= rm -rf
 INCLUDES	= Span.hpp
 SRCS		= main.cpp Span.cpp

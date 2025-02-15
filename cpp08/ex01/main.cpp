@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simarcha <simarcha@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: simon <simon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 16:05:49 by simon             #+#    #+#             */
-/*   Updated: 2025/02/08 18:50:00 by simarcha         ###   ########.fr       */
+/*   Updated: 2025/02/15 20:43:15 by simon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,36 @@ int	main(void)
 		sp.addNumber(11);
 		std::cout << sp.shortestSpan() << std::endl;
 		std::cout << sp.longestSpan() << std::endl;
+	}
+	{
+		std::cout << "--------Second Test--------\n";
+		Span sp = Span(2);
+		sp.addNumber(-2147483648);
+		sp.addNumber(2147483647);
+		try
+		{
+			std::cout << "longest span : " << sp.longestSpan() << std::endl;
+			std::cout << "shortest span: " << sp.shortestSpan() << std::endl;
+		}
+		catch (const std::exception& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
+	}
+	{
+		std::cout << "--------Third Test--------\n";
+		Span sp = Span(2);
+		sp.addNumber(2147483647);
+		sp.addNumber(2147483647);
+		try
+		{
+			std::cout << "longest span : " << sp.longestSpan() << std::endl;
+			std::cout << "shortest span: " << sp.shortestSpan() << std::endl;
+		}
+		catch (const std::exception& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
 	}
 	{
 		std::cout << "--------Next Test--------\n";
