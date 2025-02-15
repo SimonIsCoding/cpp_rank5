@@ -6,7 +6,7 @@
 /*   By: simon <simon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 16:15:03 by simon             #+#    #+#             */
-/*   Updated: 2025/02/15 20:26:31 by simon            ###   ########.fr       */
+/*   Updated: 2025/02/15 20:53:32 by simon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,10 @@ class Span
 
 		void	displayAllNumbers() const;
 
-		void				addNumber(int nb);
+		void		addNumber(int nb);
 		long		shortestSpan() const;
 		long		longestSpan() const;
+		void		fill_vector(unsigned int _N);
 };
 
 #endif

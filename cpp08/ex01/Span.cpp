@@ -6,7 +6,7 @@
 /*   By: simon <simon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:51:51 by simon             #+#    #+#             */
-/*   Updated: 2025/02/15 20:42:42 by simon            ###   ########.fr       */
+/*   Updated: 2025/02/15 20:53:21 by simon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,4 +109,11 @@ long	Span::longestSpan() const
 	}
 	else
 		throw (Span::NotEnoughNumbers());
+}
+
+void Span::fill_vector(unsigned int _N)
+{
+	_vec.resize(_N);
+	for (std::vector<int>::iterator it = _vec.begin(); it != _vec.end(); ++it)
+		*it = rand();
 }
