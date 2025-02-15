@@ -6,7 +6,7 @@
 /*   By: simon <simon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 16:05:49 by simon             #+#    #+#             */
-/*   Updated: 2025/02/15 20:43:15 by simon            ###   ########.fr       */
+/*   Updated: 2025/02/15 20:53:57 by simon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,12 @@ int	main(void)
 		{
 			std::cerr << e.what() << '\n';
 		}
+	}
+	{
+		std::cout << "--------Last Test--------\n";
+		Span sp = Span(5);
+		sp.fill_vector(10);
+		sp.displayAllNumbers();
 	}
 	return (0);
 }
