@@ -6,7 +6,7 @@
 /*   By: simon <simon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 13:09:49 by simon             #+#    #+#             */
-/*   Updated: 2025/02/18 15:58:15 by simon            ###   ########.fr       */
+/*   Updated: 2025/02/18 16:18:35 by simon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,15 +62,15 @@ void	split_container(const T &container, T &left, T &right)
 	right.insert(right.end(), mid, container.end());
 }
 
-template <typename T>
-T	merge_sort_algo(T &container)
-{
-	T	left;
-	T	right;
+// template <typename T>
+// T	merge_sort_algo(T &container)
+// {
+// 	T	left;
+// 	T	right;
 	
-	if (container.size() != 1)
-		split_container(container, left, right);
+// 	if (container.size() != 1)
+// 		split_container(container, left, right);
 		
-}
+// }
 
 #endif
