@@ -3,65 +3,57 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simon <simon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: simarcha <simarcha@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 12:22:15 by simon             #+#    #+#             */
-/*   Updated: 2025/02/18 16:27:09 by simon            ###   ########.fr       */
+/*   Updated: 2025/02/18 20:27:19 by simarcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
-
-std::vector<unsigned int> merge_sort_algo(std::vector<unsigned int> vec)
-{
-	std::vector<unsigned int>	left_part;
-	std::vector<unsigned int>	right_part;
-	std::vector<unsigned int>	sorted_vec;
-
-	size_t mid = vec.size() / 2;
-	left_part.assign(vec.begin(), vec.begin() + mid);
-	right_part.assign(vec.begin() + mid, vec.end());
-	while (left_part.size() > 1)
-	{
-		merge_sort_algo(left_part);
-	}
-	while (right_part.size() > 1)
-	{
-		merge_sort_algo(right_part);
-	}
-	if (right_part[0] < left_part[0])
-	{
-		sorted_vec.push_back(right_part[0]);
-		right_part.pop_back();
-	}
-	else
-	{
-		sorted_vec.push_back(right_part[0]);
-		right_part.pop_back();
-	}
-	return (sorted_vec);
-}
+#include <list>
+#include <vector>
 
 int	main(int argc, char** argv)
 {
+	if (argc == 1)
 	{
-		std::vector<unsigned int> vec;
-		if (argc == 1)
-		{
-			std::cerr << "Error\n";
-			exit(1);
-		}
-		vec = parse_and_create_vector<std::vector<unsigned int> >(argv);
-		std::cout << "Before: ";
-		print_container(vec);
-		// vec = merge_sort_algo<std::vector<unsigned int> >(vec);
-		vec = merge_sort_algo(vec);
-		std::cout << "After: ";
-		print_container(vec);
-		// std::cout << "Time to process a range of " << vec.size() << " elements with std::[..] : " << TIME << " us\n";
+		std::cerr << "Error\n";
+		exit(1);
 	}
 	{
-		//same with list
+		struct timeval start, end;
+		gettimeofday(&start, NULL);
+		std::cout << "---With Vector---\n";
+		std::vector<unsigned int> vec;
+		vec = parse_and_create_container<std::vector<unsigned int> >(argv);
+		std::cout << "Before: ";
+		print_container(vec);
+		vec = mergesort<std::vector<unsigned int> >(vec);
+		std::cout << "After : ";
+		print_container(vec);
+		gettimeofday(&end, NULL);
+		double time_taken;
+		time_taken = (end.tv_sec - start.tv_sec) * 1e6;
+		time_taken = (time_taken + (end.tv_usec - start.tv_usec)) * 1e-6;
+		std::cout << "Time to process a range of " << vec.size() << " elements with std::[..] : " << time_taken << " us\n";
+	}
+	{
+		struct timeval start, end;
+		gettimeofday(&start, NULL);
+		std::cout << "---With List---\n";
+		std::list<unsigned int> lst;
+		lst = parse_and_create_container<std::list<unsigned int> >(argv);
+		std::cout << "Before: ";
+		print_container(lst);
+		lst = mergesort<std::list<unsigned int> >(lst);
+		std::cout << "After : ";
+		print_container(lst);
+		gettimeofday(&end, NULL);
+		double time_taken;
+		time_taken = (end.tv_sec - start.tv_sec) * 1e6;
+		time_taken = (time_taken + (end.tv_usec - start.tv_usec)) * 1e-6;
+		std::cout << "Time to process a range of " << lst.size() << " elements with std::[..] : " << time_taken << " us\n";
 	}
 	return (0);
 }

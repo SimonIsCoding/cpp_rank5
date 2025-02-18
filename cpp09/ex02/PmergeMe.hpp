@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simon <simon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: simarcha <simarcha@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 13:09:49 by simon             #+#    #+#             */
-/*   Updated: 2025/02/18 16:18:35 by simon            ###   ########.fr       */
+/*   Updated: 2025/02/18 20:30:55 by simarcha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 #define PMERGEME_HPP
 
 #include <iostream>
-#include <vector>
 #include <algorithm>
+#include <sys/time.h>
 
 template <typename T>
-T parse_and_create_vector(char **argv)
+T parse_and_create_container(char **argv)
 {
 	T container;
 	typedef typename T::value_type type;
@@ -37,9 +37,7 @@ T parse_and_create_vector(char **argv)
 			}
 			j++;
 		}
-		// unsigned int nb = atoi(argv[i]);
 		type nb = static_cast<type>(atoi(argv[i]));
-		// container.push_back(nb);
 		container.insert(container.end(), nb);
 		i++;
 	}
@@ -55,22 +53,51 @@ void	print_container(const T &container)
 }
 
 template <typename T>
-void	split_container(const T &container, T &left, T &right)
+T merge(T& a, T& b)
 {
-	typename T::const_iterator mid = container.begin();
-	left.insert(left.end(), container.begin(), mid);
-	right.insert(right.end(), mid, container.end());
+	T c;
+	typename T::iterator it_a = a.begin();
+	typename T::iterator it_b = b.begin();
+	while (it_a != a.end() && it_b != b.end())
+	{
+		if (*it_a > *it_b)
+		{
+			c.push_back(*it_b);
+			++it_b;
+		}
+		else
+		{
+			c.push_back(*it_a);
+			++it_a;
+		}
+	}
+	while (it_a != a.end())
+	{
+		c.push_back(*it_a);
+		++it_a;
+	}
+	while (it_b != b.end())
+	{
+		c.push_back(*it_b);
+		++it_b;
+	}
+	return c;
 }
 
-// template <typename T>
-// T	merge_sort_algo(T &container)
-// {
-// 	T	left;
-// 	T	right;
-	
-// 	if (container.size() != 1)
-// 		split_container(container, left, right);
-		
-// }
+template <typename T>
+T mergesort(T a)
+{
+	if (a.size() <= 1)
+		return a;
+	typename T::iterator mid = a.begin();
+	size_t mid_index = a.size() / 2;
+	for (size_t i = 0; i < mid_index; ++i)
+		++mid;
+	T left(a.begin(), mid);
+	T right(mid, a.end());
+	left = mergesort(left);
+	right = mergesort(right);
+	return merge(left, right);
+}
 
 #endif
